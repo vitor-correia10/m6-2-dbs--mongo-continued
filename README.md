@@ -22,7 +22,7 @@ _You could use a util function like the one you created yesterday..._
 
 Keep in mind, that under normal circumstances, the FE should not be affected by any changes you make here. Meaning it shouldn't break because you change the code in the backend. Be mindful of what the FE expects as data as well as how you are storing it in the database.
 
-Don't forget to provide an `_id` to each document. You could do that before getting rid of the code that currently generates the seats. Each seat shouls look something like this.
+Don't forget to provide an `_id` to each document. You could do that before getting rid of the code that currently generates the seats. Each seat should look something like this.
 
 ```js
 {
@@ -57,7 +57,11 @@ There are two options that come to mind:
 
 Both are viable and it really depends on what will be done with the data. It's totally up to you!
 
-# STRETCH Goals........
+---
+
+<center>🟡 - Minimally complete workshop (75%) - 🟡</center>
+
+---
 
 ## Exercise 5 - Uhoh! Incoming requirements
 
@@ -72,3 +76,9 @@ Administrators would like to be able to
 You will need to test this implementation with Insomnia.
 
 You could always try to improve the FE as well. There some benefit/difficulty in adding features to code you didn't write...
+
+---
+
+<center>🟢 - Complete workshop (100%) - 🟢</center>
+
+---
