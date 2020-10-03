@@ -8,4 +8,7 @@ desktop.ini
 .Trashes
 ._*
 
+# misc
+.env
+
 node_modules/
