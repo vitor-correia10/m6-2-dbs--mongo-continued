@@ -24,8 +24,6 @@ for (let r = 0; r < row.length; r++) {
 }
 
 const batchImport = async () => {
-    console.log(seats);
-    console.log(MONGO_URI);
     try {
         const client = await MongoClient(MONGO_URI, options);
         await client.connect();
@@ -35,12 +33,10 @@ const batchImport = async () => {
         const r = await db.collection("seats").insertMany(seats);
         assert.strictEqual(seats.length, r.insertedCount);
 
-        console.log("success");
         client.close();
     } catch (err) {
         console.log(err.stack);
     }
-
 }
 
 batchImport();
