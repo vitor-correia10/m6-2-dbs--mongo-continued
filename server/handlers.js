@@ -34,7 +34,40 @@ const getSeats = async (req, res) => {
     } catch (err) {
         res.status(404).json({ status: 404, data: "Not Found" });
     }
+};
+
+const bookSeat = async (req, res) => {
+    const client = await MongoClient(MONGO_URI, options);
+    const { seatId, fullName, email, creditCard, expiration } = req.body;
+
+    if (!fullName || !email || !creditCard || !expiration) {
+        return res.status(400).json({
+            status: 400,
+            message: "Please provide all informations!",
+        });
+    }
+
+    try {
+        await client.connect();
+        const db = client.db('m6-2-mongo');
+
+        const query = { _id: seatId };
+        const newValues = { $set: { isBooked: true, fullName, email } };
+
+        const u = await db.collection("seats").updateOne(query, newValues);
+        assert.strictEqual(1, u.matchedCount);
+        assert.strictEqual(1, u.modifiedCount);
+
+        res.status(200).json({
+            status: 200,
+            success: true,
+        });
+
+        client.close();
+    } catch (err) {
+        res.status(500).json({ status: 500, message: err.message });
+    }
 
 };
 
-module.exports = { getSeats };
+module.exports = { getSeats, bookSeat };
